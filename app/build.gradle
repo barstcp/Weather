@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "a4c.weather"
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "WEATER_API_ID", '"efe809a0b589f924d3b631ee2cd194b4"'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.1'
+
+//  Позволяет использовать RecyclerView в проекте
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+
+//  GSON - упрощает работу с JSON файлами
+    compile 'com.google.code.gson:gson:2.8.1'
+
+//  Retrofit - позволяет выстраивать HTML запросы при помощи аннотаций
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+//  Logging-interceptor - позволяет логировать информацию о запросах и ответах на них
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+
+//  Библиотека для отображения графиков
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
+
+//  ButterKnife - позволяет инициализировать View через аннотации
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha8'
+    testCompile 'junit:junit:4.12'
+}
